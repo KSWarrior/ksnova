@@ -30,3 +30,11 @@ bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/mai
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-mv-Install.sh)
 ```
+3. **User-only (export to PATH, no sudo/root required)**
+```bash
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/export-mv-Install.sh)
+```
+4. **Without sudo/root ($HOME)**
+```bash
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/export-mv-Install.sh)
+```
