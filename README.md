@@ -25,4 +25,5 @@ Fast installation via curl:
 ```bash
 wget https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux
 chmod +x ksnova-linux
+mkdir /usr/local/bin/ksn
 mv ksnova-linux /usr/local/bin/ksnova
