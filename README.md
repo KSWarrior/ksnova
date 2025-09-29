@@ -24,19 +24,19 @@ Choose the method that fits your system:
 
 1. **With sudo (recommended)**  
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-install.sh)
 ```
 2. **With root access**
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-mv-Install.sh)
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-install.sh)
 ```
 3. **User-only (export to PATH, no sudo/root required)**
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/export-mv-Install.sh)
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/export-install.sh)
 ```
 4. **Without sudo/root ($HOME)**
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/home-mv-Install.sh)
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/home-install.sh)
 ```
 > ⚡ This method installs KS Nova in your home directory (e.g., $HOME/ksn) instead of /usr/local/bin.
 The binary will be located at:
