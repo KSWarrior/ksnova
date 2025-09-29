@@ -38,3 +38,7 @@ bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/mai
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/export-mv-Install.sh)
 ```
+> ⚡ This method installs KS Nova in your home directory (e.g., $HOME/ksn) instead of /usr/local/bin.
+The binary will be located at:
+
+$HOME/ksn/ksn
