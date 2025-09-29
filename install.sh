@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# KS Nova Ultra-Fast Installer (All methods quickly, last-resort user path)
+# KS Nova Ultra-Fast Installer (wget version, all methods, last-resort user path)
 
 set -e
 
@@ -10,7 +10,15 @@ FALLBACK_DIR="$HOME/.local/bin"          # Normal fallback
 USER_DEST="$HOME/ks_nova/local/bin/ksnova-linux"   # Last-resort path
 
 echo "📥 Downloading KS Nova..."
-curl -fsSL "$URL" -o "$TMP_FILE"
+
+# Use wget instead of curl
+if command -v wget &>/dev/null; then
+    wget -qO "$TMP_FILE" "$URL" || { echo "❌ Download failed"; exit 1; }
+else
+    echo "❌ wget not found. Please install wget and try again."
+    exit 1
+fi
+
 chmod +x "$TMP_FILE"
 
 echo "📦 Installing KS Nova..."
