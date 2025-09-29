@@ -20,8 +20,15 @@ It supports installing, updating, uninstalling, and running popular game panels 
 
 ## 🎬 Installation
 
-Fast installation via curl:
-
+1. Required sudo
+```bash
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
+```
+2. Required root access
+```bash
+bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-mv-Install.sh)
+```
+3. Required
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
 ```
