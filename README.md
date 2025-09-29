@@ -23,4 +23,5 @@ It supports installing, updating, uninstalling, and running popular game panels 
 Fast installation via curl:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/install.sh)
+wget -qO /tmp/ksnova-install.sh https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/install.sh
+bash /tmp/ksnova-install.sh
