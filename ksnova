@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+RAW_BASE="https://raw.githubusercontent.com/ks518nova/ksnova/main"
+KS_DIR="$HOME/.ksnova"
+
+# Animated error
+animated_error() {
+    local message="❌ Failed to connect KS Nova server."
+    local delay=0.05
+    command -v tput &>/dev/null && tput setaf 1
+    for ((i=0;i<${#message};i++)); do
+        printf "%s" "${message:$i:1}"
+        sleep $delay
+    done
+    command -v tput &>/dev/null && tput sgr0
+    echo
+}
+
+# Spinner while downloading
+spinner() {
+    local pid=$1
+    local delay=0.1
+    local spin='|/-\'
+    while kill -0 $pid 2>/dev/null; do
+        for s in ${spin}; do
+            printf "\r⏳ %s" "$s"
+            sleep $delay
+        done
+    done
+    printf "\r"
+}
+
+# Special global commands (update, uninstall, version)
+case "$1" in
+  update)
+    echo "🔄 Updating KS Nova..."
+    bash <(curl -fsSL https://-/install_panel/)
+    exit $?
+    ;;
+  uninstall)
+    echo "🗑️  Uninstalling KS Nova..."
+    bash <(curl -fsSL https://-/install_panel/)
+    exit 0
+    ;;
+  version)
+    echo "📦 KS Nova version v1.0.0"
+    exit 0
+    ;;
+esac
+
+# If no arguments given, show help and exit
+if [[ $# -eq 0 ]]; then
+    echo "⚠️  No command provided."
+    echo "Usage: ks <command> [options...]"
+    echo "Try: ks install pterodactyl_panel"
+    exit 1
+fi
+
+# Otherwise, pass ALL arguments to main.sh
+curl -fsSL "$RAW_BASE/main.sh" | bash -s -- "$@" &
+pid=$!
+spinner $pid
+wait $pid
+status=$?
+if [[ $status -ne 0 ]]; then
+    animated_error
+    exit 1
+fi
