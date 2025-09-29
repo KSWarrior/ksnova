@@ -40,5 +40,4 @@ bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/mai
 ```
 > ⚡ This method installs KS Nova in your home directory (e.g., $HOME/ksn) instead of /usr/local/bin.
 The binary will be located at:
-
-$HOME/ksn/ksn
+> So you need to use ks nova by ./$HOME/ksn/ksn instead of ksn like ./$HOME/ksn/ksn install pterodactyl panel
