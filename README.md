@@ -24,3 +24,4 @@ Fast installation via curl:
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
+```
