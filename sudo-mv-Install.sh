@@ -1,39 +1,111 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-echo "📥 Downloading KS Nova..."
+# -------------------------------
+# KS Nova Installer
+# Created by KS Warrior
+# -------------------------------
 
-# Download the executable
-if wget -q https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux -O ksnova-linux; then
-    echo "✅ Download completed!"
-else
-    echo "❌ Failed to download KS Nova!"
-    echo " Visit https://github.com/KSWarrior/ksnova for installation."
+URL="https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux"
+DEFAULT_DIR="/usr/local/bin/ksn"
+NON_ROOT_DIR="$HOME/.local/bin"
+FILE_NAME="ksn"
+OFFICIAL_SITE="https://github.com/KSWarrior/ksnova"
+AUTHOR="KS Warrior"
+
+# -------------------------------
+# Function: Error handler
+# -------------------------------
+error_exit() {
+    echo -e "\n❌ An error occurred during installation."
+    echo "KS Nova is created by $AUTHOR."
+    echo "Please visit the official KS Nova site for manual installation:"
+    echo "$OFFICIAL_SITE"
     exit 1
-fi
+}
 
-# Make it executable
-chmod +x ksnova-linux
+# -------------------------------
+# Function: Ensure wget exists
+# -------------------------------
+check_dependencies() {
+    command -v wget >/dev/null 2>&1 || { 
+        echo "❌ wget is required but not installed."
+        echo "KS Nova is created by $AUTHOR."
+        error_exit
+    }
+}
 
-# Try installing to /usr/local/bin
-if sudo mkdir -p /usr/local/bin && sudo mv ksnova-linux /usr/local/bin/ksn; then
-    echo "✅ KS Nova installed successfully in /usr/local/bin!"
-    echo "You can now run it using: ksn"
-else
-    echo "⚠️ Could not install to /usr/local/bin. Trying alternative method..."
-    
-    # Alternative: install to user home directory
-    USER_DIR="$HOME/.ksnova/bin"
-    mkdir -p "$USER_DIR"
-    
-    if mv ksnova-linux "$USER_DIR/ksn"; then
-        echo "✅ KS Nova installed successfully in $USER_DIR!"
-        echo "Add this to your PATH to run it anywhere:"
-        echo "  export PATH=\"\$HOME/.ksnova/bin:\$PATH\""
-        echo "You can now run it using: ksn"
+# -------------------------------
+# Function: Choose target directory
+# -------------------------------
+select_target_dir() {
+    TARGET_DIR="$DEFAULT_DIR"
+    if [ ! -w "$(dirname "$TARGET_DIR")" ]; then
+        echo "⚠️ Cannot write to $DEFAULT_DIR. Using non-root directory instead..."
+        TARGET_DIR="$NON_ROOT_DIR"
+        mkdir -p "$TARGET_DIR" || error_exit
+        echo "✅ Directory created: $TARGET_DIR"
+        echo '📌 Make sure this directory is in your PATH:'
+        echo "export PATH=\"$NON_ROOT_DIR:\$PATH\""
+        echo "You can add it to ~/.bashrc or ~/.zshrc"
     else
-        echo "❌ Installation failed! Please check your permissions or visit:"
-        echo "   https://github.com/KSWarrior/ksnova for manual installation instructions."
-        exit 1
+        sudo mkdir -p "$TARGET_DIR" || error_exit
+        echo "✅ Directory created: $TARGET_DIR"
     fi
+}
+
+# -------------------------------
+# Function: Download KS Nova
+# -------------------------------
+download_ksnova() {
+    echo "📥 Downloading KS Nova (created by $AUTHOR)..."
+    if wget -q --show-progress "$URL" -O "$FILE_NAME"; then
+        echo "✅ Download successful! KS Nova created by $AUTHOR."
+    else
+        error_exit
+    fi
+}
+
+# -------------------------------
+# Function: Make executable
+# -------------------------------
+make_executable() {
+    if chmod +x "$FILE_NAME"; then
+        echo "⚡ Made $FILE_NAME executable! KS Nova created by $AUTHOR."
+    else
+        error_exit
+    fi
+}
+
+# -------------------------------
+# Function: Move to target directory
+# -------------------------------
+move_to_target() {
+    echo "🚀 Moving $FILE_NAME to $TARGET_DIR..."
+    if [ "$TARGET_DIR" = "$NON_ROOT_DIR" ]; then
+        mv "$FILE_NAME" "$TARGET_DIR/" || error_exit
+    else
+        sudo mv "$FILE_NAME" "$TARGET_DIR/" || error_exit
+    fi
+    echo "✅ KS Nova installed successfully! Created by $AUTHOR."
+    echo "Run it using: $TARGET_DIR/$FILE_NAME"
+}
+
+# -------------------------------
+# Installer Workflow
+# -------------------------------
+echo "👋 Welcome! KS Nova is created by $AUTHOR."
+check_dependencies
+select_target_dir
+download_ksnova
+make_executable
+move_to_target
+
+# -------------------------------
+# Optional: Verify installation
+# -------------------------------
+if "$TARGET_DIR/$FILE_NAME" --help >/dev/null 2>&1; then
+    echo "🎉 KS Nova is ready to use! Created by $AUTHOR."
+else
+    echo "⚠️ Installation completed but verification failed. KS Nova created by $AUTHOR."
 fi
