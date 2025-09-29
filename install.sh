@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# KS Nova Ultra-Fast Installer (wget version, all methods, last-resort user path)
+# KS Nova Ultra-Fast Installer (wget-only version, all methods, last-resort user path)
 
 set -e
 
