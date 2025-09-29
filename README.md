@@ -2,33 +2,31 @@
 
 ![KS Nova Banner](https://user-images.githubusercontent.com/yourusername/ks-nova-banner.gif)
 
-**KS Nova** is a lightweight, fast, and ultra-robust CLI tool for managing game servers, panels, and custom packages.  
-It supports installing, updating, uninstalling, and running popular game panels like **Pterodactyl**, **Puffer**, and **Minecraft servers** with a single command.
+**KS Nova** is a lightning-fast, ultra-robust CLI tool for managing game servers, panels, and custom packages.  
+With a single command, you can install, update, uninstall, or run popular game panels like **Pterodactyl**, **Puffer**, and **Minecraft servers** effortlessly.
 
 ---
 
 ## ✨ Features
 
-- ✅ **Easy Install**: Install Pterodactyl, Puffer, Drogen, and Minecraft servers quickly.
-- ⚡ **Fast CLI**: Lightweight script designed for speed.
-- 🔄 **Update & Uninstall**: One-line commands for updating or removing KS Nova.
-- 🛠️ **Package Management**: Install and manage packages for servers.
-- 🎨 **Stylish Console Output**: Animated progress bars and colorful logs.
-- 🖥️ **Cross-platform**: Works on Linux, macOS, and WSL.
+- ✅ **Easy Install** — Deploy Pterodactyl, Puffer, Drogen, and Minecraft servers in seconds.  
+- ⚡ **Blazing Fast CLI** — Lightweight, responsive, and ready-to-go.  
+- 🔄 **Update & Uninstall** — One-line commands to keep KS Nova fresh or remove it cleanly.  
+- 🛠️ **Package Management** — Manage server packages like a pro.  
+- 🎨 **Stylish Console Output** — Colorful logs, animated progress bars, and eye candy for your terminal.  
+- 🖥️ **Cross-platform** — Works on Linux, macOS, and WSL out-of-the-box.  
 
 ---
 
 ## 🎬 Installation
 
-1. Required sudo
+Choose the method that fits your system:
+
+1. **With sudo (recommended)**  
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
 ```
-2. Required root access
+2. **With root access**
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-mv-Install.sh)
-```
-3. Required
-```bash
-bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/sudo-mv-Install.sh)
 ```
