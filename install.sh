@@ -3,7 +3,7 @@
 
 set -e
 
-URL="https://github.com/ks518nova/ksnova/releases/latest/download/ks"
+URL="https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux"
 TMP_FILE="/tmp/ksnova-linux"
 DEST="/usr/local/bin/ksnova-linux"
 FALLBACK_DIR="$HOME/.local/bin"          # Normal fallback
