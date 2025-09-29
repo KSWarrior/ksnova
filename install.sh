@@ -4,10 +4,10 @@
 set -e
 
 URL="https://github.com/ks518nova/ksnova/releases/latest/download/ks"
-TMP_FILE="/tmp/ks"
-DEST="/usr/local/bin/ks"
+TMP_FILE="/tmp/ksnova-linux"
+DEST="/usr/local/bin/ksnova-linux"
 FALLBACK_DIR="$HOME/.local/bin"          # Normal fallback
-USER_DEST="$HOME/ks_nova/local/bin/ks"   # Last-resort path
+USER_DEST="$HOME/ks_nova/local/bin/ksnova-linux"   # Last-resort path
 
 echo "📥 Downloading KS Nova..."
 curl -fsSL "$URL" -o "$TMP_FILE"
@@ -61,7 +61,7 @@ if cp "$TMP_FILE" "$USER_DEST" && chmod +x "$USER_DEST"; then
     echo "⚠️ To run KS Nova, use the full path:"
     echo "   $USER_DEST"
     echo "   or relative:"
-    echo "   ./ks_nova/local/bin/ks"
+    echo "   ./ks_nova/local/bin/ksnova-linux"
     exit 0
 fi
 
