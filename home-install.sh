@@ -34,4 +34,11 @@ fi
 
 # Apply immediately
 export PATH="$HOME/.ksnova/bin:$PATH"
-echo "✅ KS Nova installed! You can now use 'ksn' command without restarting (new terminals will load it automatically)."
+
+if command -v ksn >/dev/null 2>&1; then
+    echo "✅ KS Nova installation successful!"
+else
+    echo "❌ Failed to download KS Nova."
+    echo "🔗 Visit the official site for manual installation: https://github.com/KSWarrior/ksnova"
+    exit 1
+fi
