@@ -6,7 +6,7 @@ echo
 mkdir -p "$HOME/.ksnova/bin"
 echo "📂 Created directory: $HOME/.ksnova/bin"
 
-if wget -q https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux -O "$HOME/.ksnova/bin/ksn"; then
+if wget -q https://github.com/KSWarrior/ksnova/releases/latest/download/ksnova-linux -O "$HOME/.ksnova/bin/ksn"; then
     echo "✅ Downloaded KS Nova successfully!"
 else
     echo "❌ Failed to download KS Nova. Visit https://github.com/KSWarrior/ksnova for manual installation."
