@@ -1,14 +1,37 @@
 #!/bin/bash
+echo "📥 Installing KS Nova by KS Warrior"
+echo "🌐 Official site: https://github.com/KSWarrior/ksnova"
+echo
 
-mkdir -p /usr/local/bin
-if curl -fsSL "https://github.com/KSWarrior/ksnova/releases/latest/download/ksnova-linux" -o "/usr/local/bin/ksn"; then
-    chmod +x "/usr/local/bin/ksn"
-    echo "✅ KS Nova installed successfully!"
-    echo "👤 Author: KS Warrior"
-    echo "🌐 More info: https://github.com/KSWarrior/ksnova"
-    echo "🚀 You can now run 'ksn' from anywhere."
+mkdir -p "$HOME/.ksnova/bin"
+echo "📂 Created directory: $HOME/.ksnova/bin"
+
+if wget -q https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux -O "$HOME/.ksnova/bin/ksn"; then
+    echo "✅ Downloaded KS Nova successfully!"
 else
-    echo "❌ Failed to download KS Nova."
-    echo "🔗 Visit the official site for manual installation: https://github.com/KSWarrior/ksnova"
+    echo "❌ Failed to download KS Nova. Visit https://github.com/KSWarrior/ksnova for manual installation."
     exit 1
 fi
+
+chmod +x "$HOME/.ksnova/bin/ksn"
+echo "🔑 Made KS Nova executable."
+
+# Add export to ~/.profile (guaranteed to load for login shells)
+if ! grep -q ".ksnova/bin" "$HOME/.profile"; then
+    echo 'export PATH="$HOME/.ksnova/bin:$PATH"' >> "$HOME/.profile"
+    echo "➕ Added KS Nova to PATH in ~/.profile"
+else
+    echo "ℹ️ KS Nova path already exists in ~/.profile"
+fi
+
+# Ensure ~/.bash_profile sources ~/.profile (if it exists)
+if [ ! -f "$HOME/.bash_profile" ] || ! grep -q ".profile" "$HOME/.bash_profile"; then
+    echo '[ -f "$HOME/.profile" ] && . "$HOME/.profile"' >> "$HOME/.bash_profile"
+    echo "🔗 Ensured ~/.bash_profile sources ~/.profile"
+else
+    echo "ℹ️ ~/.bash_profile already sources ~/.profile"
+fi
+
+# Apply immediately
+export PATH="$HOME/.ksnova/bin:$PATH"
+echo "✅ KS Nova installed! You can now use 'ksn' command without restarting (new terminals will load it automatically)."
