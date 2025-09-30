@@ -8,7 +8,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 mkdir -p /usr/local/bin
-if curl -fsSL "https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/ksnova-linux" -o "/usr/local/bin/ksn"; then
+if curl -fsSL "https://github.com/KSWarrior/ksnova/releases/latest/download/ksnova-linux" -o "/usr/local/bin/ksn"; then
     chmod +x "/usr/local/bin/ksn"
     echo "✅ KS Nova installed successfully!"
     echo "👤 Author: KS Warrior"
