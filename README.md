@@ -8,7 +8,7 @@ Choose the method that fits your system:
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/root-install.sh)
 ```
-2. **Without sudo/root ($HOME)**
+2. **Without sudo/root (This is works in all conditions**
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/home-install.sh)
 ```
