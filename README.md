@@ -12,8 +12,3 @@ bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/mai
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/KSWarrior/ksnova/refs/heads/main/home-install.sh)
 ```
-> ⚡ KS Nova is installed in your home directory: $HOME/.ksnova/ksn
-> To run KS Nova, use the full path:
->   $HOME/.ksnova/ksn/ksn [command]
-> Example:
->   $HOME/.ksnova/ksn/ksn install pterodactyl panel
